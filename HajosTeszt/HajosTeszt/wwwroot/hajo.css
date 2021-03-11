@@ -67,12 +67,8 @@ div {
     background-color:red;
 }
 
-#válasz1{
-    padding:2%;
-}
-#válasz2 {
-    padding: 2%;
-}
-#válasz3 {
+
+
+.kerdes {
     padding: 2%;
 }
