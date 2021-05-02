@@ -40,7 +40,10 @@ function kérdésMegjelenítés(kérdés) {
     } else {
         document.getElementById("kép").innerText = ""
     }
-    correctAnswer=kérdés.correctAnswer
+    correctAnswer = kérdés.correctAnswer
+    document.getElementById("válasz1").classList.remove("jó", "rossz");
+    document.getElementById("válasz2").classList.remove("jó", "rossz");
+    document.getElementById("válasz3").classList.remove("jó", "rossz");
 }
 
 function kérdésBetöltés(id) {
@@ -57,17 +60,17 @@ function kérdésBetöltés(id) {
 }  
 
 function next() {
-    document.getElementById("válasz1").style.backgroundColor = "transparent"
-    document.getElementById("válasz2").style.backgroundColor = "transparent"
-    document.getElementById("válasz3").style.backgroundColor = "transparent"
+    //document.getElementById("válasz1").style.backgroundColor = "transparent"
+    //document.getElementById("válasz2").style.backgroundColor = "transparent"
+    //document.getElementById("válasz3").style.backgroundColor = "transparent"
     kérdéssorszám++
     kérdésBetöltés(kérdéssorszám)
 }
 
 function previous() {
-    document.getElementById("válasz1").style.backgroundColor = "transparent"
-    document.getElementById("válasz2").style.backgroundColor = "transparent"
-    document.getElementById("válasz3").style.backgroundColor = "transparent"
+    //document.getElementById("válasz1").style.backgroundColor = "transparent"
+    //document.getElementById("válasz2").style.backgroundColor = "transparent"
+    //document.getElementById("válasz3").style.backgroundColor = "transparent"
     kérdéssorszám--
     if (kérdéssorszám < 0) {
         kérdéssorszám = 1
@@ -79,9 +82,9 @@ function previous() {
 
 function válasszínezés(n) {
     if (n==correctAnswer) {
-        document.getElementById("válasz" + n).style.backgroundColor="green"
+        document.getElementById("válasz" + n).classList.add("jó")
     } else {
-        document.getElementById("válasz" + n).style.backgroundColor = "red"
-        document.getElementById("válasz" + correctAnswer).style.backgroundColor = "green"
+        document.getElementById("válasz" + n).classList.add("rossz")
+        document.getElementById("válasz" + correctAnswer).classList.add("jó")
     }
 }
