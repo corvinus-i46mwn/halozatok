@@ -96,7 +96,7 @@ function init() {
         kérdésBetöltés(nextQuestion, i);
         nextQuestion++;
     }
-    nextQuestion=nextQuestion+3
+    
     fetch(`questions/count`)
         .then(
             result => {
