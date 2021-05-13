@@ -89,13 +89,30 @@ function init() {
             goodAnswers: 0
         }
         hotList[i] = q;
+
+        
+        if (localStorage.getItem("hotList")) {
+            hotList = JSON.parse(localStorage.getItem("hotList"));
+        }
+        if (localStorage.getItem("displayedQuestion")) {
+            displayedQuestion = parseInt(localStorage.getItem("displayedQuestion"));
+        }
+        if (localStorage.getItem("nextQuestion")) {
+            nextQuestion = parseInt(localStorage.getItem("nextQuestion"));
+        }
     }
 
     
-    for (var i = 0; i < questionsInHotList; i++) {
-        kérdésBetöltés(nextQuestion, i);
-        nextQuestion++;
+    if (!localStorage.getItem("hotList")) {
+        for (var i = 0; i < questionsInHotList; i++) {
+            kérdésBetöltés(nextQuestion, i);
+            nextQuestion++;
+        }
+    } else {
+        console.log("localStorageból dolgozunk");
+        kérdésMegjelenítés();
     }
+    
     
     fetch(`questions/count`)
         .then(
@@ -160,4 +177,9 @@ function válasszínezés(n) {
         hotList[displayedQuestion].goodAnswers=0
     }
     timeoutHandler = setTimeout(next, 3000);
+
+
+    localStorage.setItem("hotList", JSON.stringify(hotList));
+    localStorage.setItem("displayedQuestion", displayedQuestion);
+    localStorage.setItem("nextQuestion", nextQuestion);
 }
